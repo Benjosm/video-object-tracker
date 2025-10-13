@@ -1,0 +1,112 @@
+#### 1. User Requirements Summary
+- "Create a standalone, non-web application" (explicit requirement)
+- Must "process live video from a webcam or a saved video" (explicit input source requirement)
+- Must "detect, classify, and track objects in real-time" (exact functional requirement)
+- No web application (explicit constraint: "non-web application")
+- Real-time processing (explicit timing constraint)
+
+#### 2. Missing Details Filled In
+• Output method: Since running in headless Docker container (no GUI possible), output will be:
+  - Annotated video saved to file (default: 'output.mp4')
+  - Object tracking data printed to stdout per frame
+  Justification: Directly satisfies "standalone" requirement while working in headless environment per constraints. Avoids adding unrequested GUI dependencies.
+
+• Object model: Using YOLOv5n (nano) via torch.hub for detection/classification
+  Justification: User didn't specify model; YOLOv5n is smallest COCO-pretrained model (4.7MB) meeting real-time CPU constraint (~5 GB memory limit). User requirement for "classify" implies standard object classes.
+
+• Tracking implementation: Per-class SORT (Simple Online Realtime Tracking) implemented locally
+  Justification: User didn't specify tracker; SORT is CPU-efficient (no GPU needed) and meets real-time requirement. Per-class tracking resolves ambiguity in "track objects" for multiple classes.
+
+• Input handling: 
+  - Webcam: Integer input (e.g., 0) 
+  - Saved video: File path string
+  Justification: Matches user's "webcam OR saved video" requirement. Headless container can't access webcam by default, but design allows it when container run with --device.
+
+• Confidence threshold: 0.5 (minimum detection confidence)
+  Justification: User didn't specify; standard value balancing precision/recall for real-time.
+
+#### 3. Technologies & Setup
+• Language: Python 3.9 (compatible with pre-installed python3-dev and 5GB memory limit)
+• Frameworks: 
+    - OpenCV (headless version) for video I/O
+    - PyTorch CPU-only for inference
+    - Custom SORT implementation for tracking
+• Dependencies (pinned versions):
+    opencv-python-headless==4.8.0.76
+    torch==2.0.1+cpu
+    torchvision==0.15.2+cpu
+    numpy==1.23.5
+• Setup: 
+    - Install via pip (no root needed per constraints)
+    - Model weights downloaded automatically via torch.hub
+• Verification strategy:
+    1. Manual build: Run `pip install -r requirements.txt`
+    2. Manual run: Process sample video, confirm output file creation and stdout logs
+    3. Minimal test: Verify FPS counter updates in stdout during short run
+
+#### 4. Module & File Plan
+/usr/src/projects/project/
+├── video_tracker.py          # Main application
+│   Purpose: Coordinates video input, processing, and output
+│   Key functions: 
+│     - parse_args(): Handles --input/--output CLI flags
+│     - main(): Video capture loop with detection/tracking
+│   Verification: Manual run with test video, check stdout logs and output.mp4
+│
+└── sort_tracker.py           # Tracking module
+    Purpose: Implements per-class object tracking with SORT algorithm
+    Key classes:
+      - SortTracker: Manages per-class Kalman filters and Hungarian matching
+      - update(): Processes detections, returns tracked objects with IDs
+    Verification: Minimal test - validate ID consistency with mock detection sequences
+
+#### 5. Implementation Strategy
+Step 1: Input handling (video_tracker.py)
+  - Parse CLI args: --input (int=webcam, str=video file), --output (default=output.mp4)
+  - Initialize VideoCapture: 
+      if input.isdigit(): webcam index; else: video file path
+  Verification: Manual run with invalid path → expect error message
+  
+Step 2: Model initialization (video_tracker.py)
+  - Load YOLOv5n via torch.hub (pretrained=True, force_reload=False)
+  - Set device='cpu' explicitly
+  Verification: Minimal test - check model outputs 80-class COCO labels
+  
+Step 3: Tracking pipeline (sort_tracker.py + video_tracker.py)
+  - Group detections by class_id before tracking
+  - For each class: update SortTracker with [x1,y1,x2,y2,conf]
+  - Associate class_id with tracked objects
+  Verification: Manual inspection - same object maintains consistent track ID across frames in stdout
+  
+Step 4: Output generation (video_tracker.py)
+  - Write annotated frames to output video (same FPS/resolution as input)
+  - Print to stdout: frame number, tracked object count, FPS
+  Verification: Manual run - confirm non-zero output.mp4 size and log entries
+  
+Edge cases:
+  • Webcam access failure: Catch cv2 error → print user-friendly message
+  • End of video: Graceful exit without error
+  • Low-confidence detections: Filtered out (confidence<0.5)
+
+#### 6. Run & Build Instructions
+Docker-compatible setup:
+  1. Install dependencies:
+     pip install opencv-python-headless==4.8.0.76 torch==2.0.1+cpu torchvision==0.15.2+cpu numpy==1.23.5
+  2. Download sample video (for verification):
+     wget https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/BigBuckBunny_360_10s_1MB.mp4
+  3. Run application:
+     python video_tracker.py --input BigBuckBunny_360_10s_1MB.mp4 --output output.mp4
+  4. Verification commands:
+     - Check output: ls -l output.mp4  # Must be non-zero size
+     - Check logs: grep "Frame" output.log  # Should show incrementing frame numbers
+     - Confirm real-time: Look for "FPS: [number]" in logs (should be >1)
+
+#### 7. Completion Checklist
+[ ] 100% complete when:
+    • Processes saved video (via --input path): Verified by output.mp4 creation and content
+    • Handles webcam when container has device access: Verified by stdout log (when run with --device)
+    • Correctly detects/classifies objects: Verified by COCO class labels in stdout logs
+    • Maintains consistent track IDs: Verified by same ID across frames for single object
+    • Runs in headless container: Verified by successful execution without X11 errors
+    • Meets real-time requirement: Verified by FPS counter in logs (>1 FPS)
+    • All 3 verification methods implemented per file section
