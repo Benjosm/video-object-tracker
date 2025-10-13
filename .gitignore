@@ -1,0 +1,46 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+# If you use a virtual environment locally (e.g., for testing),
+# uncomment and adjust these lines to match your setup.
+# venv/
+# .venv/
+# env/
+# bin/
+# include/
+# lib/
+# lib64/
+# *.egg-info/
+# man/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+
+# Build artifacts
+build/
+dist/
+
+# Temporary/Generated files
+# This project generates an output video file.
+output.mp4
+*.log
+
+# Downloaded Data / Sample Files
+# The plan mentions downloading a sample video for verification (.mp4).
+# Large data files like videos are typically not committed.
+*.mp4
+*.mov
+*.avi
+*.webm
+*.ogg
+
+# PyTorch cache (if explicitly configured to be within the project, otherwise it's usually user-level)
+# .torch/
