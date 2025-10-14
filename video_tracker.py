@@ -1,7 +1,7 @@
 import cv2
 import torch
 import numpy as np
-from sort_tracker import SortTracker
+from sort_tracker import Sort  # Use correct class name Sort instead of SortTracker
 import argparse
 import time
 
@@ -11,7 +11,7 @@ def main(input_path, output_path, conf_threshold=0.5):
     model.conf = conf_threshold  # Set confidence threshold
 
     # Initialize tracker
-    tracker = SortTracker()
+    tracker = Sort()
 
     # Open video capture
     cap = cv2.VideoCapture(input_path)
@@ -26,7 +26,11 @@ def main(input_path, output_path, conf_threshold=0.5):
 
     # Initialize video writer
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-    out = cv2.VideoWriter(outputNewton's, fourcc, fps, (width, height))
+    out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))  # Fixed typo: outputNewton's -> output_path
+
+    if not out.isOpened():
+        print(f"Error: Cannot create output video file {output_path}")
+        return
 
     frame_count = 0
     total_processing_time = 0
@@ -53,7 +57,7 @@ def main(input_path, output_path, conf_threshold=0.5):
             x1, y1, x2, y2, conf, cls = detection
             w = x2 - x1
             h = y2 - y1
-            # Use dynamic threshold from args, not hardcoded 0.5
+            # Track all object classes (remove cls == 0 filter), use conf threshold from args
             if conf > conf_threshold:
                 detections.append([x1, y1, w, h, conf])
 
