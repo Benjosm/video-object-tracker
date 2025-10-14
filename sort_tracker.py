@@ -1,146 +1,186 @@
 import numpy as np
 from filterpy.kalman import KalmanFilter
 from scipy.optimize import linear_sum_assignment
+import math
+
+def iou(box1, box2):
+    """Compute Intersection over Union (IoU) between two bounding boxes"""
+    x_left = max(box1[0], box2[0])
+    y_top = max(box1[1], box2[1])
+    x_right = min(box1[2], box2[2])
+    y_bottom = min(box1[3], box2[3])
+
+    if x_right < x_left or y_bottom < y_top:
+        return 0.0
+
+    intersection_area = (x_right - x_left) * (y_bottom - y_top)
+    box1_area = (box1[2] - box1[0]) * (box1[3] - box1[1])
+    box2_area = (box2[2] - box2[0]) * (box2[3] - box2[1])
+    union_area = float(box1_area + box2_area - intersection_area)
+    
+    return intersection_area / union_area
+
+class KalmanBoxTracker:
+    """Kalman Filter for bounding box tracking"""
+    count = 0
+    def __init__(self, bbox):
+        # Define constant velocity model
+        self.kf = KalmanFilter(dim_x=7, dim_z=4)
+        self.kf.F = np.array([[1, 0, 0, 0, 1, 0, 0],
+                              [0, 1, 0, 0, 0, 1, 0],
+                              [0, 0, 1, 0, 0, 0, 1],
+                              [0, 0, 0, 1, 0, 0, 0],
+                              [0, 0, 0, 0, 1, 0, 0],
+                              [0, 0, 0, 0, 0, 1, 0],
+                              [0, 0, 0, 0, 0, 0, 1]])
+        self.kf.H = np.array([[1, 0, 0, 0, 0, 0, 0],
+                              [0, 1, 0, 0, 0, 0, 0],
+                              [0, 0, 1, 0, 0, 0, 0],
+                              [0, 0, 0, 1, 0, 0, 0]])
+
+        self.kf.R[2:, 2:] *= 10.0  # measurement noise
+        self.kf.P[4:, 4:] *= 1000.0  # initial uncertainty
+        self.kf.P *= 10.0
+        self.kf.Q[-1, -1] *= 0.01
+        self.kf.Q[4:, 4:] *= 0.01
+
+        # Initialize state
+        self.kf.x[:4] = bbox.reshape((4, 1))
+        self.time_since_update = 0
+        self.id = KalmanBoxTracker.count
+        KalmanBoxTracker.count += 1
+        self.history = []
+        self.hits = 0
+        self.hit_streak = 0
+        self.age = 0
+
+    def update(self, bbox):
+        """Update with a new detection"""
+        self.time_since_update = 0
+        self.history = []
+        self.hits += 1
+        self.hit_streak += 1
+        self.kf.update(bbox)
+
+    def predict(self):
+        """Predict next state"""
+        if self.kf.x[6] + self.kf.x[2] <= 0:
+            self.kf.x[6] *= 0.0
+        self.kf.predict()
+        self.age += 1
+        if self.time_since_update > 0:
+            self.hit_streak = 0
+        self.time_since_update += 1
+        self.history.append(self.kf.x.copy())
+        return self.history[-1]
+
+    def get_state(self):
+        """Get current bounding box estimate"""
+        return np.concatenate((self.kf.x[:4].reshape((4,)), [self.kf.x[4], self.kf.x[5], self.kf.x[6]]))
+
+def associate_detections_to_trackers(detections, trackers, iou_threshold=0.3):
+    """Assign detections to trackers using Hungarian algorithm"""
+    if len(trackers) == 0:
+        return np.empty((0, 2), dtype=int), np.arange(len(detections)), np.empty((0, 5), dtype=int)
+
+    iou_matrix = np.zeros((len(detections), len(trackers)), dtype=np.float32)
+
+    for d, det in enumerate(detections):
+        for t, trk in enumerate(trackers):
+            iou_matrix[d, t] = iou(det, trk)
+
+    if min(iou_matrix.shape) > 0:
+        a = (iou_matrix > iou_threshold).astype(np.int32)
+        if a.sum(1).max() == 1 and a.sum(0).max() == 1:
+            matched_indices = np.stack(np.where(a), axis=1)
+        else:
+            matched_indices = np.array(linear_sum_assignment(-iou_matrix)).T
+    else:
+        matched_indices = np.empty((0, 2))
+
+    unmatched_detections = []
+    for d, det in enumerate(detections):
+        if d not in matched_indices[:, 0]:
+            unmatched_detections.append(d)
+
+    unmatched_trackers = []
+    for t, trk in enumerate(trackers):
+        if t not in matched_indices[:, 1]:
+            unmatched_trackers.append(t)
+
+    matches = []
+    for m in matched_indices:
+        if iou_matrix[m[0], m[1]] < iou_threshold:
+            unmatched_detections.append(m[0])
+            unmatched_trackers.append(m[1])
+        else:
+            matches.append(m.reshape(1, 2))
+    if len(matches) == 0:
+        matches = np.empty((0, 2), dtype=int)
+    else:
+        matches = np.concatenate(matches, axis=0)
+
+    return matches, np.array(unmatched_detections), np.array(unmatched_trackers)
 
 class Sort:
+    """SORT Tracker Implementation"""
     def __init__(self, max_age=1, min_hits=3, iou_threshold=0.3):
-        """
-        Initialize the SORT tracker.
-        :param max_age: Maximum number of frames to keep a track without detection.
-        :param min_hits: Minimum number of detections to confirm a track.
-        :param iou_threshold: Minimum IOU for association.
-        """
         self.max_age = max_age
         self.min_hits = min_hits
         self.iou_threshold = iou_threshold
-        self.next_id = 1
-        self.tracks = []
+        self.trackers = []
+        self.frame_count = 0
 
-    def update(self, detections):
+    def update(self, dets=np.empty((0, 5))):
         """
-        Update the tracker with new detections.
-        :param detections: List of [x1, y1, x2, y2, score] detections.
-        :return: List of tracked objects as [x1, y1, x2, y2, track_id].
+        Params:
+          dets - a numpy array of detections in the format [[x1,y1,x2,y2,score],[x1,y1,x2,y2,score],...]
+        Requires: this method must be called once for each frame even with empty detections.
+        Returns a similar array, where the last column is the object ID.
         """
-        # Predict new positions for existing tracks
-        predicted_tracks = []
-        for track in self.tracks:
-            track['kalman'].predict()
-            predicted_tracks.append(track['kalman'].x)
+        self.frame_count += 1
 
-        # Associate detections with tracks
-        matched, unmatched_dets, unmatched_tracks = self._associate_detections_to_tracks(detections, predicted_tracks)
+        # Get predicted locations from existing trackers
+        trks = np.zeros((len(self.trackers), 5))
+        to_del = []
+        ret = []
+        for t, trk in enumerate(trks):
+            pos = self.trackers[t].predict()[0]
+            trk[:] = [pos[0], pos[1], pos[2], pos[3], 0]
+            if np.any(np.isnan(pos)):
+                to_del.append(t)
+        trks = np.ma.compress_rows(np.ma.masked_invalid(trks))
+        for t in reversed(to_del):
+            self.trackers.pop(t)
 
-        # Update matched tracks with detections
-        for d, t in matched:
-            self.tracks[t]['kalman'].update(detections[d][:4])
-            self.tracks[t]['hits'] += 1
-            self.tracks[t]['age'] = 0
+        matched, unmatched_dets, unmatched_trks = associate_detections_to_trackers(dets, trks, self.iou_threshold)
 
-        # Create new tracks for unmatched detections
-        for d in unmatched_dets:
-            self._initiate_track(detections[d])
+        # Update matched trackers with assigned detections
+        for m in matched:
+            self.trackers[m[1]].update(dets[m[0], :4])
 
-        # Mark unmatched tracks for removal
-        for t in unmatched_tracks:
-            self.tracks[t]['age'] += 1
+        # Create and initialize new trackers for unmatched detections
+        for i in unmatched_dets:
+            trk = KalmanBoxTracker(dets[i, :4])
+            self.trackers.append(trk)
 
         # Remove dead tracks
-        self.tracks = [t for t in self.tracks if t['age'] <= self.max_age and t['hits'] >= self.min_hits]
+        i = len(self.trackers)
+        for trk in reversed(self.trackers):
+            d = trk.get_state()[4]
+            if (trk.time_since_update < 1) and (trk.hit_streak >= self.min_hits or self.frame_count <= self.min_hits):
+                ret.append(np.concatenate((trk.get_state()[0:4], [trk.id + 1])).reshape(1, -1))  # +1 because IDs start at 1
+            i -= 1
+            if trk.time_since_update > self.max_age:
+                self.trackers.pop(i)
 
-        # Generate output
-        outputs = []
-        for track in self.tracks:
-            bbox = track['kalman'].x[:4].flatten()
-            outputs.append([bbox[0], bbox[1], bbox[2], bbox[3], track['id']])
-        
-        return np.array(outputs) if len(outputs) > 0 else np.empty((0, 5))
+        if len(ret) > 0:
+            return np.concatenate(ret)
+        return np.empty((0, 5))
 
-    def _associate_detections_to_tracks(self, detections, predicted_tracks):
-        """
-        Associate detections to tracked objects using IOU as cost.
-        """
-        if len(predicted_tracks) == 0:
-            return np.empty((0, 2), dtype=int), np.arange(len(detections)), np.empty((0), dtype=int)
-        if len(detections) == 0:
-            return np.empty((0, 2), dtype=int), np.empty((0), dtype=int), np.arange(len(predicted_tracks))
+    def get_trackers(self):
+        return self.trackers
 
-        # Compute IOU cost matrix
-        iou_matrix = np.zeros((len(detections), len(predicted_tracks)), dtype=np.float32)
-        for d, det in enumerate(detections):
-            for t, trk in enumerate(predicted_tracks):
-                iou_matrix[d, t] = self._iou(det[:4], trk[:4])
-
-        # Use Hungarian algorithm for assignment
-        row_ind, col_ind = linear_sum_assignment(-iou_matrix)
-
-        matched = []
-        unmatched_dets = list(set(range(len(detections))) - set(row_ind))
-        unmatched_tracks = list(set(range(len(predicted_tracks))) - set(col_ind))
-
-        # Filter matches using IOU threshold
-        for row, col in zip(row_ind, col_ind):
-            if iou_matrix[row, col] < self.iou_threshold:
-                unmatched_dets.append(row)
-                unmatched_tracks.append(col)
-            else:
-                matched.append((row, col))
-
-        return np.array(matched), np.array(unmatched_dets), np.array(unmatched_tracks)
-
-    def _initiate_track(self, detection):
-        """
-        Create a new track for a detection.
-        """
-        kalman = KalmanFilter(dim_x=8, dim_z=4)
-        kalman.x[:4] = detection[:4].reshape(4, 1)
-        kalman.P[:4, :4] *= 1000.0
-        kalman.P[4:, 4:] *= 1000.0
-        kalman.F = np.array([[1, 0, 0, 0, 1, 0, 0, 0],
-                             [0, 1, 0, 0, 0, 1, 0, 0],
-                             [0, 0, 1, 0, 0, 0, 1, 0],
-                             [0, 0, 0, 1, 0, 0, 0, 1],
-                             [0, 0, 0, 0, 1, 0, 0, 0],
-                             [0, 0, 0, 0, 0, 1, 0, 0],
-                             [0, 0, 0, 0, 0, 0, 1, 0],
-                             [0, 0, 0, 0, 0, 0, 0, 1]])
-        kalman.H = np.array([[1, 0, 0, 0, 0, 0, 0, 0],
-                             [0, 1, 0, 0, 0, 0, 0, 0],
-                             [0, 0, 1, 0, 0, 0, 0, 0],
-                             [0, 0, 0, 1, 0, 0, 0, 0]])
-        kalman.R[2:, 2:] *= 10.0
-        kalman.Q[-1, -1] *= 0.01
-        kalman.Q[4:, 4:] *= 0.01
-
-        self.tracks.append({
-            'id': self.next_id,
-            'kalman': kalman,
-            'hits': 1,
-            'age': 0
-        })
-        self.next_id += 1
-
-    def _iou(self, bbox_a, bbox_b):
-        """
-        Compute Intersection over Union (IOU) of two bounding boxes.
-        """
-        x1, y1, x2, y2 = bbox_a
-        x1p, y1p, x2p, y2p = bbox_b
-
-        inter_x1 = max(x1, x1p)
-        inter_y1 = max(y1, y1p)
-        inter_x2 = min(x2, x2p)
-        inter_y2 = min(y2, y2p)
-
-        inter_w = max(0, inter_x2 - inter_x1)
-        inter_h = max(0, inter_y2 - inter_y1)
-
-        if inter_w == 0 or inter_h == 0:
-            return 0.0
-
-        inter_area = inter_w * inter_h
-        area_a = (x2 - x1) * (y2 - y1)
-        area_b = (x2p - x1p) * (y2p - y1p)
-        union_area = area_a + area_b - inter_area
-
-        return inter_area / union_area
+    def reset(self):
+        self.trackers = []
+        self.frame_count = 0
