@@ -3,6 +3,23 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+*.log
 
 # Virtual environment
 # If you use a virtual environment locally (e.g., for testing),
@@ -33,14 +50,16 @@ dist/
 output.mp4
 *.log
 
-# Downloaded Data / Sample Files
-# The plan mentions downloading a sample video for verification (.mp4).
-# Large data files like videos are typically not committed.
+# Video outputs
 *.mp4
-*.mov
 *.avi
+*.mov
+*.mkv
 *.webm
 *.ogg
 
-# PyTorch cache (if explicitly configured to be within the project, otherwise it's usually user-level)
-# .torch/
+# PyTorch cache
+.torch/
+torch/_C/*.so
+**/__pycache__
+**/*.pyc
