@@ -8,7 +8,7 @@ import time
 def main(input_path, output_path, conf_threshold=0.5):
     # Initialize the YOLOv5n model as specified in project plan
     model = torch.hub.load('ultralytics/yolov5', 'yolov5n', pretrained=True)
-    model.conf = conf_threshold  # Set confidence threshold
+    # Remove model.conf setting since we manually filter detections
 
     # Initialize tracker
     tracker = Sort()
@@ -26,14 +26,14 @@ def main(input_path, output_path, conf_threshold=0.5):
 
     # Initialize video writer
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-    out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))  # Fixed typo: outputNewton's -> output_path
+    out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
 
     if not out.isOpened():
         print(f"Error: Cannot create output video file {output_path}")
         return
 
     frame_count = 0
-    total_processing_time = 0
+    start_time = time.time()
 
     while True:
         ret, frame = cap.read()
@@ -41,27 +41,24 @@ def main(input_path, output_path, conf_threshold=0.5):
             break
 
         frame_count += 1
-        start_time = time.time()
 
         # Perform detection
         results = model(frame)
 
         # Extract detections from results using xyxy format
-        # results.xyxy[0] contains tensor of detections: (x1, y1, x2, y2, confidence, class)
-        detections_tensor = results.xyxy[0]
+        detections_tensor = results.xyxy[0]  # Tensor of (x1, y1, x2, y2, conf, cls)
         detections_numpy = detections_tensor.cpu().numpy()
 
-        # Convert detections to numpy array of [x, y, w, h, confidence]
+        # Convert detections to [x, y, w, h] format (no class filter, conf filtered by threshold)
         detections = []
         for detection in detections_numpy:
             x1, y1, x2, y2, conf, cls = detection
-            w = x2 - x1
-            h = y2 - y1
-            # Track all object classes (remove cls == 0 filter), use conf threshold from args
             if conf > conf_threshold:
+                w = x2 - x1
+                h = y2 - y1
                 detections.append([x1, y1, w, h, conf])
 
-        # Update tracker with current detections
+        # Update tracker
         tracked_objects = tracker.update(np.array(detections))
 
         # Draw tracking results
@@ -73,23 +70,21 @@ def main(input_path, output_path, conf_threshold=0.5):
         # Write frame to output video
         out.write(frame)
 
-        # Calculate processing time
-        end_time = time.time()
-        frame_processing_time = end_time - start_time
-        total_processing_time += frame_processing_time
+        # Calculate and print FPS every 30 frames
+        if frame_count % 30 == 0:
+            elapsed = time.time() - start_time
+            current_fps = frame_count / elapsed
+            print(f"Frame {frame_count}, Real-time FPS: {current_fps:.1f}")
 
-        # Print frame counter and FPS to stdout as required
-        print(f"Frame {frame_count} processed in {frame_processing_time:.3f}s, "
-              f"FPS: {1.0/max(frame_processing_time, 1e-6):.1f}")
+    # Final statistics
+    total_time = time.time() - start_time
+    if frame_count > 0:
+        avg_fps = frame_count / total_time
+        print(f"Processing complete. Total frames: {frame_count}, Average FPS: {avg_fps:.1f}")
 
     # Release resources
     cap.release()
     out.release()
-
-    # Final statistics
-    if frame_count > 0:
-        avg_fps = frame_count / total_processing_time
-        print(f"Processing complete. Total frames: {frame_count}, Average FPS: {avg_fps:.1f}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Video Object Tracker")

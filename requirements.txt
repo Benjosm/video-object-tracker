@@ -1,5 +1,7 @@
+--find-links https://download.pytorch.org/whl/cpu
 torch==2.0.1+cpu
 torchvision==0.15.2+cpu
-opencv-python-headless==4.8.0.76
 numpy==1.23.5
+ultralytics>=8.0.0
+opencv-python-headless==4.8.0.76
 filterpy==1.4.5
