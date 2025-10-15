@@ -1,0 +1,1134 @@
+%PDF-1.3
+%ºß¬à
+3 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 4 0 R
+>>
+endobj
+4 0 obj
+<<
+/Length 2688
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F2 20 Tf
+23. TL
+0 g
+102.0472440944882067 671.8112598425196893 Td
+(Code Analysis Report) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+102.0472440944882067 631.9687401574802834 Td
+(Benjosm/video-object-tracker) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0 g
+102.0472440944882067 605.7955118110235162 Td
+(Generated on: Oct 14, 2025, 4:46 PM) Tj
+ET
+BT
+/F2 16 Tf
+18.3999999999999986 TL
+0 g
+102.0472440944882067 522.0947244094487587 Td
+(Issue Summary) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0 g
+102.0472440944882067 491.9214960629921052 Td
+(Potential Bugs) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0 g
+487.7327559055117945 491.9214960629921052 Td
+(3) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0 g
+102.0472440944882067 469.24433070866138 Td
+(Style Issues) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0 g
+487.7327559055117945 469.24433070866138 Td
+(3) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0 g
+102.0472440944882067 446.5671653543306547 Td
+(Security Concerns) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0 g
+487.7327559055117945 446.5671653543306547 Td
+(0) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0 g
+102.0472440944882067 423.8899999999999295 Td
+(Incomplete Code) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0 g
+487.7327559055117945 423.8899999999999295 Td
+(1) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0 g
+102.0472440944882067 401.2128346456692611 Td
+(Performance Concerns) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0 g
+487.7327559055117945 401.2128346456692611 Td
+(1) Tj
+ET
+0.78 G
+0.5669291338582678 w
+102.0472440944882067 367.1970866141731449 m
+493.2327559055117376 367.1970866141731449 l
+S
+BT
+/F2 10 Tf
+11.5 TL
+0 g
+102.0472440944882067 344.5199212598424765 Td
+(Total Issues) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0 g
+487.7327559055117945 344.5199212598424765 Td
+(8) Tj
+ET
+BT
+/F2 16 Tf
+18.3999999999999986 TL
+0 g
+102.0472440944882067 262.3151968503935905 Td
+(Reports) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0 g
+102.0472440944882067 232.1419685039369369 Td
+(Build Report) Tj
+ET
+0.96 g
+102.0472440944882067 205.968740157480255 391.1855118110235594 -86.1732283464567104 re
+f
+0.78 G
+0.5669291338582678 w
+102.0472440944882067 205.968740157480255 m
+102.0472440944882067 119.7955118110235446 l
+S
+493.2327559055117376 205.968740157480255 m
+493.2327559055117376 119.7955118110235446 l
+S
+102.0472440944882067 205.968740157480255 m
+493.2327559055117376 205.968740157480255 l
+S
+BT
+/F5 8 Tf
+9.1999999999999993 TL
+0.196 g
+113.3858267716535551 190.0947244094487587 Td
+() Tj
+T* (**Build Process Report**) Tj
+T* () Tj
+T* (**Command Executed:**) Tj
+T* (`pip install -r requirements.txt`) Tj
+T* () Tj
+T* (**Status:**) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.588 g
+102.0472440944882067 813.5435433070865656 Td
+(Benjosm/video-object-tracker) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.588 g
+452.5927559055117513 28.3464566929134207 Td
+(Page 1 of 7) Tj
+ET
+endstream
+endobj
+5 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 6 0 R
+>>
+endobj
+6 0 obj
+<<
+/Length 4167
+>>
+stream
+0.5669291338582678 w
+0.78 G
+0.96 g
+102.0472440944882067 671.8112598425196893 391.1855118110235594 -294.8031496062992574 re
+f
+0.78 G
+0.5669291338582678 w
+102.0472440944882067 671.8112598425196893 m
+102.0472440944882067 377.0081102362203751 l
+S
+493.2327559055117376 671.8112598425196893 m
+493.2327559055117376 377.0081102362203751 l
+S
+102.0472440944882067 377.0081102362203751 m
+493.2327559055117376 377.0081102362203751 l
+S
+BT
+/F5 8 Tf
+9.1999999999999993 TL
+0.196 g
+113.3858267716535551 655.9372440944881646 Td
+(Failed \(Terminated due to inactivity timeout\)) Tj
+T* () Tj
+T* (**Duration:**) Tj
+T* (The process was active for over 1 minute before termination was manually) Tj
+T* (initiated.) Tj
+T* () Tj
+T* (**Build Output/Logs:**) Tj
+T* (```) Tj
+T* (Looking in links: https://download.pytorch.org/whl/cpu) Tj
+T* (Collecting torch) Tj
+T* (  Downloading torch-2.8.0-cp39-cp39-manylinux_2_28_x86_64.whl \(888.0 MB\)) Tj
+T* (```) Tj
+T* (The log shows that the process hung during the download of the `torch`) Tj
+T* (package. The download did not complete, and attempts to read the process) Tj
+T* (output later failed with an `ENXIO` error, indicating the process, while) Tj
+T* (listed as running, might not have been producing any output.) Tj
+T* () Tj
+T* (**Verification of Installation:**) Tj
+T* (After terminating the build process, `pip list` was run to check installed) Tj
+T* (packages. The output confirmed that none of the required dependencies \(e.g.,) Tj
+T* (torch, torchvision, opencv-python-headless\) were successfully installed. The) Tj
+T* (installed packages listed are the base system packages.) Tj
+T* () Tj
+T* (**Conclusion:**) Tj
+T* (The build process failed to complete due to the lengthy download time of) Tj
+T* (large dependencies \(specifically PyTorch\) which caused an inactivity) Tj
+T* (timeout. The environment was unable to install the required packages, and) Tj
+T* (the application cannot be executed in its current state. A more stable) Tj
+T* (network, increased timeout limits, or a pre-configured environment with) Tj
+T* (these dependencies is required to complete the build successfully.) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+102.0472440944882067 340.1577165354329964 Td
+(Test Report) Tj
+ET
+0.96 g
+102.0472440944882067 313.9844881889763428 391.1855118110235594 -58.9606299212598515 re
+f
+0.78 G
+0.5669291338582678 w
+102.0472440944882067 313.9844881889763428 m
+102.0472440944882067 255.0238582677164629 l
+S
+493.2327559055117376 313.9844881889763428 m
+493.2327559055117376 255.0238582677164629 l
+S
+102.0472440944882067 313.9844881889763428 m
+493.2327559055117376 313.9844881889763428 l
+S
+102.0472440944882067 255.0238582677164629 m
+493.2327559055117376 255.0238582677164629 l
+S
+BT
+/F5 8 Tf
+9.1999999999999993 TL
+0.196 g
+113.3858267716535551 298.1104724409448181 Td
+() Tj
+T* (Ran the applications tests. No test files or testing frameworks were found.) Tj
+T* (The `README.md` is empty and provides no instructions on testing.) Tj
+T* (Conclusion: The application has no tests.) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+102.0472440944882067 218.1734645669290558 Td
+(Run Report) Tj
+ET
+0.96 g
+102.0472440944882067 192.0002362204724022 391.1855118110235594 -68.031496062992133 re
+f
+0.78 G
+0.5669291338582678 w
+102.0472440944882067 192.0002362204724022 m
+102.0472440944882067 123.968740157480255 l
+S
+493.2327559055117376 192.0002362204724022 m
+493.2327559055117376 123.968740157480255 l
+S
+102.0472440944882067 192.0002362204724022 m
+493.2327559055117376 192.0002362204724022 l
+S
+BT
+/F5 8 Tf
+9.1999999999999993 TL
+0.196 g
+113.3858267716535551 176.1262204724408775 Td
+() Tj
+T* (Application testing summary: The video_tracker.py application has been) Tj
+T* (partially tested. Key findings: 1\) The application successfully downloads) Tj
+T* (and loads the YOLOv5n model \(yolov5n.pt\) when not present. 2\) Command-line) Tj
+T* (argument parsing works correctly as shown by the help output. 3\) The SORT) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.588 g
+102.0472440944882067 813.5435433070865656 Td
+(Benjosm/video-object-tracker) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.588 g
+452.5927559055117513 28.3464566929134207 Td
+(Page 2 of 7) Tj
+ET
+endstream
+endobj
+7 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 8 0 R
+>>
+endobj
+8 0 obj
+<<
+/Length 3341
+>>
+stream
+0.5669291338582678 w
+0.78 G
+0.96 g
+102.0472440944882067 671.8112598425196893 391.1855118110235594 -104.3149606299212593 re
+f
+0.78 G
+0.5669291338582678 w
+102.0472440944882067 671.8112598425196893 m
+102.0472440944882067 567.4962992125983874 l
+S
+493.2327559055117376 671.8112598425196893 m
+493.2327559055117376 567.4962992125983874 l
+S
+102.0472440944882067 567.4962992125983874 m
+493.2327559055117376 567.4962992125983874 l
+S
+BT
+/F5 8 Tf
+9.1999999999999993 TL
+0.196 g
+113.3858267716535551 655.9372440944881646 Td
+(tracker is properly configured with IOU threshold of 0.3 and max age of 10.) Tj
+T* (4\) The application attempts to open video sources but fails in our) Tj
+T* (environment due to lack of webcam access and inability to download test) Tj
+T* (videos. 5\) The core dependencies \(OpenCV, PyTorch, ultralytics\) appear to be) Tj
+T* (functional based on successful model loading. 6\) The video processing) Tj
+T* (pipeline cannot be fully tested without a video source. The application is) Tj
+T* (structured correctly with video_tracker.py as the main entry point \(main.py) Tj
+T* (is deprecated\). The tracking system combines YOLO for object detection with) Tj
+T* (SORT for object tracking across frames.) Tj
+ET
+BT
+/F2 16 Tf
+18.3999999999999986 TL
+0. g
+102.0472440944882067 471.1183464566928478 Td
+(File Descriptions & Issues) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+102.0472440944882067 423.9372440944881077 Td
+(Video Object Tracker) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 394.929370078740078 Td
+(This feature provides a complete solution for object detection and tracking in video) Tj
+T* (sequences. It uses YOLOv5 nano for object detection and the SORT algorithm for) Tj
+T* (tracking objects across frames. The video_tracker.py file serves as the main interface,) Tj
+T* (while sort_tracker.py implements the SORT algorithm used for tracking. Additionally, it) Tj
+T* (includes a standalone, non-web application for real-time object detection, classification,) Tj
+T* (and tracking. The application uses video processing, headless operation, and is) Tj
+T* (containerized with Docker. The project plan outlines the use of Python, OpenCV,) Tj
+T* (PyTorch, and SORT for the implementation.) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+102.0472440944882067 276.0829133858267141 Td
+(    Video Object Tracker) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 247.0750393700786844 Td
+(    This feature provides a complete solution for object detection and tracking in video) Tj
+T* (sequences. It uses YOLOv5 nano for object detection and the SORT algorithm for) Tj
+T* (tracking objects across frames. The video_tracker.py file serves as the main interface,) Tj
+T* (while sort_tracker.py implements the SORT algorithm used for tracking. Additionally, it) Tj
+T* (includes a standalone, non-web application for real-time object detection, classification,) Tj
+T* (and tracking. The application uses video processing, headless operation, and is) Tj
+T* (containerized with Docker. The project plan outlines the use of Python, OpenCV,) Tj
+T* (PyTorch, and SORT for the implementation.) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.588 g
+102.0472440944882067 813.5435433070865656 Td
+(Benjosm/video-object-tracker) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.588 g
+452.5927559055117513 28.3464566929134207 Td
+(Page 3 of 7) Tj
+ET
+endstream
+endobj
+9 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 10 0 R
+>>
+endobj
+10 0 obj
+<<
+/Length 3725
+>>
+stream
+0.5669291338582678 w
+0.78 G
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+102.0472440944882067 671.8112598425196893 Td
+(        Video Object Tracker) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 642.8033858267715459 Td
+(        This feature provides a complete solution for object detection and tracking in video) Tj
+T* (sequences. It uses YOLOv5 nano for object detection and the SORT algorithm for) Tj
+T* (tracking objects across frames. The video_tracker.py file serves as the main interface,) Tj
+T* (while sort_tracker.py implements the SORT algorithm used for tracking.) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+102.0472440944882067 569.9569291338582389 Td
+(            video_tracker.py) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 540.9490551181102092 Td
+(            This Python script is a video object tracker that uses the YOLOv5 nano model for) Tj
+T* (object detection and the SORT \(Simple Online and Realtime Tracking\) algorithm for) Tj
+T* (tracking objects across video frames. The script processes an input video file or camera) Tj
+T* (feed, detects objects in each frame, tracks them using the SORT algorithm, and writes) Tj
+T* (the tracked objects to an output video file. The script also provides real-time feedback on) Tj
+T* (the processing progress, including the current frame number and frames per second) Tj
+T* (\(FPS\).) Tj
+T* () Tj
+T* (The script starts by parsing command-line arguments for the input video file path or) Tj
+T* (camera index, the output video file path, and a confidence threshold for object detection.) Tj
+T* (It then loads the YOLOv5 nano model for object detection, which is optimized for CPU) Tj
+T* (efficiency. The script opens the input video file and retrieves its properties, such as frame) Tj
+T* (width, frame height, and FPS. It then initializes a VideoWriter object to write the tracked) Tj
+T* (objects to the output video file.) Tj
+T* () Tj
+T* (The script initializes the SORT tracker with specific parameters, including the maximum) Tj
+T* (age of a track, the minimum number of hits required to establish a track, and the) Tj
+T* (intersection-over-union \(IoU\) threshold for associating detections with tracks. The script) Tj
+T* (then enters a loop to process each frame of the input video. For each frame, it performs) Tj
+T* (object detection using the YOLOv5 model, extracts the detections, and filters them) Tj
+T* (based on the confidence threshold. The detections are then converted from the xyxy) Tj
+T* (format to the xywh format and passed to the SORT tracker for updating the tracks.) Tj
+T* () Tj
+T* (The script draws bounding boxes and track IDs on the frame for each tracked object,) Tj
+T* (using a color based on the class ID for better visualization. The frame is then written to) Tj
+T* (the output video file. The script provides real-time feedback on the processing progress,) Tj
+T* (including the current frame number and FPS, every 30 frames. The script also includes) Tj
+T* (commented-out code for displaying the resulting frame in a window and allowing the user) Tj
+T* (to quit the processing by pressing the 'q' key.) Tj
+T* () Tj
+T* (The script handles exceptions that may occur during processing and ensures that all) Tj
+T* (resources are properly released, including the input video file, the output video file, and) Tj
+T* (any OpenCV windows. Finally, the script prints a summary of the processing, including) Tj
+T* (the total number of frames, the total processing time, and the average FPS.) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.588 g
+102.0472440944882067 813.5435433070865656 Td
+(Benjosm/video-object-tracker) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.588 g
+452.5927559055117513 28.3464566929134207 Td
+(Page 4 of 7) Tj
+ET
+endstream
+endobj
+11 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 12 0 R
+>>
+endobj
+12 0 obj
+<<
+/Length 4041
+>>
+stream
+0.5669291338582678 w
+0.78 G
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+102.0472440944882067 671.8112598425196893 Td
+(            sort_tracker.py) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 642.8033858267715459 Td
+(              • Potential Bugs:) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 627.1340944881890209 Td
+(                  - 1. The `predict` method in the `KalmanBoxTracker` class checks if) Tj
+T* (`\(self.kf.x[6] + self.kf.x[2]\) <= 0` and sets `self.kf.x[6] *= 0.0`. However, this condition) Tj
+T* (might not be sufficient to handle all cases of negative scale or width, and the fix might) Tj
+T* (not be appropriate for all scenarios.) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 579.7994488188976447 Td
+(                  - 2. The `update` method in the `Sort` class includes a condition) Tj
+T* (`\(self.frame_count >= self.min_hits or self.frame_count <= self.min_hits\)` to determine) Tj
+T* (whether to include a tracker in the output. This condition is likely a bug and should be) Tj
+T* (`\(self.frame_count >= self.min_hits\)`.) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 532.4648031496062686 Td
+(                  - 3. The `associate_detections_to_trackers` method in the `Sort` class might) Tj
+T* (not handle cases where there are no detections or no trackers correctly, as it directly) Tj
+T* (returns empty arrays in those cases.) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 496.6301574803149492 Td
+(              • Style Issues:) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 480.9608661417323106 Td
+(                  - 1. The `iou` function and the `KalmanBoxTracker` class are not documented) Tj
+T* (with docstrings for their parameters and return values.) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 456.6262204724409912 Td
+(                  - 2. The `update` method in the `Sort` class has a comment that mentions) Tj
+T* (returning `[x,y,w,h,track_id,class]`, but the actual return value is `[x,y,w,h,track_id,cls]`.) Tj
+T* (The comment should be updated to match the actual code.) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 420.7915748031496719 Td
+(                  - 3. The `associate_detections_to_trackers` method in the `Sort` class has a) Tj
+T* (complex logic for handling matches, unmatched detections, and unmatched trackers.) Tj
+T* (This logic could be simplified and made more readable.) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 384.9569291338584094 Td
+(              • Performance Concerns:) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 369.2876377952757139 Td
+(                  - 1. The `associate_detections_to_trackers` method in the `Sort` class uses a) Tj
+T* (nested loop to compute the IoU matrix, which has a time complexity of O\(n*m\), where n) Tj
+T* (is the number of detections and m is the number of trackers. This could be a) Tj
+T* (performance bottleneck for large numbers of detections or trackers. Consider using a) Tj
+T* (more efficient data association algorithm, such as the Hungarian algorithm, which has a) Tj
+T* (time complexity of O\(n^3\) in the worst case but can be optimized for specific cases.) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+102.0472440944882067 276.2758267716536693 Td
+(        Video Object Tracker \(1\)) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 247.2679527559056396 Td
+(        This feature is a standalone, non-web application for real-time object detection,) Tj
+T* (classification, and tracking. It uses video processing, headless operation, and is) Tj
+T* (containerized with Docker. The project plan outlines the use of Python, OpenCV,) Tj
+T* (PyTorch, and SORT for the implementation. The main.py file is deprecated and has no) Tj
+T* (functionality, but it is included in the project for historical reasons.) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.588 g
+102.0472440944882067 813.5435433070865656 Td
+(Benjosm/video-object-tracker) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.588 g
+452.5927559055117513 28.3464566929134207 Td
+(Page 5 of 7) Tj
+ET
+endstream
+endobj
+13 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 14 0 R
+>>
+endobj
+14 0 obj
+<<
+/Length 2937
+>>
+stream
+0.5669291338582678 w
+0.78 G
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+102.0472440944882067 671.8112598425196893 Td
+(            main.py) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 642.8033858267715459 Td
+(            This file is a deprecated Python script. It serves no functionality as it is marked) Tj
+T* (with a comment indicating that it has been deprecated and users should use) Tj
+T* ('video_tracker.py' instead. The file does not contain any code or logic, making it) Tj
+T* (effectively empty and non-functional.) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+102.0472440944882067 569.9569291338582389 Td
+(            project_plan.txt) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 540.9490551181102092 Td
+(            This file is a project plan for a standalone, non-web application that processes) Tj
+T* (live video from a webcam or a saved video to detect, classify, and track objects in) Tj
+T* (real-time. The application will run in a headless Docker container and output annotated) Tj
+T* (video files and object tracking data to stdout. The project uses Python 3.9 with OpenCV) Tj
+T* (for video I/O, PyTorch CPU-only for inference, and a custom SORT implementation for) Tj
+T* (tracking. The plan includes detailed sections on user requirements, missing details filled) Tj
+T* (in, technologies and setup, module and file plan, implementation strategy, run and build) Tj
+T* (instructions, and a completion checklist.) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+102.0472440944882067 422.1025984251967884 Td
+(    Project Infrastructure) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 393.0947244094488155 Td
+(    This feature includes the project's infrastructure files, such as the .gitignore file for) Tj
+T* (version control, the requirements.txt file for dependency management, and the) Tj
+T* (README.md file for project documentation. These files are essential for setting up the) Tj
+T* (development environment and understanding the project's purpose and dependencies.) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+102.0472440944882067 320.248267716535338 Td
+(        Project Infrastructure) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 291.2403937007874219 Td
+(        This feature includes the project's infrastructure files, such as the .gitignore file for) Tj
+T* (version control, the requirements.txt file for dependency management, and the) Tj
+T* (README.md file for project documentation. These files are essential for setting up the) Tj
+T* (development environment and understanding the project's purpose and dependencies.) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+102.0472440944882067 218.3939370078740012 Td
+(            .gitignore) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.588 g
+102.0472440944882067 813.5435433070865656 Td
+(Benjosm/video-object-tracker) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.588 g
+452.5927559055117513 28.3464566929134207 Td
+(Page 6 of 7) Tj
+ET
+endstream
+endobj
+15 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 16 0 R
+>>
+endobj
+16 0 obj
+<<
+/Length 3353
+>>
+stream
+0.5669291338582678 w
+0.78 G
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 671.8112598425196893 Td
+(            This file is a .gitignore configuration file for a Python project. It specifies which) Tj
+T* (files and directories should be ignored by Git, meaning they won't be tracked or) Tj
+T* (committed to the repository. The file is organized into several sections, each targeting a) Tj
+T* (specific type of file or directory.) Tj
+T* () Tj
+T* (The first section targets Python-specific files and directories, such as byte-compiled files) Tj
+T* (\(e.g., .pyc, .pyo, .pyd\), optimized files \(.Python\), and virtual environment directories) Tj
+T* (\(env/, build/, etc.\). This helps keep the repository clean and focused on the source code.) Tj
+T* () Tj
+T* (The second section is commented out and targets virtual environment files. If the project) Tj
+T* (uses a virtual environment, these lines should be uncommented and adjusted to match) Tj
+T* (the setup.) Tj
+T* () Tj
+T* (The third section targets IDE and editor-specific files, such as .idea/ \(JetBrains IDE\),) Tj
+T* (.vscode/ \(Visual Studio Code\), and temporary files \(*.swp, *~, .DS_Store\).) Tj
+T* () Tj
+T* (The fourth section targets build artifacts, such as build/ and dist/ directories.) Tj
+T* () Tj
+T* (The fifth section targets temporary/generated files, such as output.mp4 and *.log files.) Tj
+T* () Tj
+T* (The sixth section targets video output files with various extensions \(e.g., .mp4, .avi,) Tj
+T* (.mov, etc.\).) Tj
+T* () Tj
+T* (The seventh section targets PyTorch-specific cache files and directories, such as .torch/,) Tj
+T* (torch/_C/*.so, and **/__pycache__.) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+102.0472440944882067 357.4648031496062117 Td
+(            requirements.txt) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 328.4569291338582389 Td
+(            This file is a Python requirements file used to specify the dependencies needed) Tj
+T* (for a project. It lists the external libraries and packages required for the project to) Tj
+T* (function correctly. The file includes specific versions for some packages and version) Tj
+T* (ranges for others. The packages listed are primarily used for machine learning, computer) Tj
+T* (vision, and data analysis tasks.) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0. g
+102.0472440944882067 244.1104724409448181 Td
+(            README.md) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 215.1025984251967884 Td
+(            This file is a README.md file for a project named "video-object-tracker". The) Tj
+T* (README.md file is typically used to provide an overview of the project, its purpose, and) Tj
+T* (instructions for setting up and using it. The content of the README.md file is currently) Tj
+T* (empty, as indicated by the "=== README.md start ===" and "=== README.md end) Tj
+T* (===" markers.) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 153.4333070866141497 Td
+(              • Incomplete Code:) Tj
+ET
+BT
+/F1 10 Tf
+11.5 TL
+0. g
+102.0472440944882067 137.7640157480315111 Td
+(                  - The README.md file is incomplete as it contains no content.) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.588 g
+102.0472440944882067 813.5435433070865656 Td
+(Benjosm/video-object-tracker) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0.588 g
+452.5927559055117513 28.3464566929134207 Td
+(Page 7 of 7) Tj
+ET
+endstream
+endobj
+1 0 obj
+<</Type /Pages
+/Kids [3 0 R 5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R ]
+/Count 7
+>>
+endobj
+17 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+18 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+19 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+20 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+21 0 obj
+<<
+/Type /Font
+/BaseFont /Courier
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+22 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+23 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+24 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+25 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Roman
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+26 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+27 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+28 0 obj
+<<
+/Type /Font
+/BaseFont /Times-BoldItalic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+29 0 obj
+<<
+/Type /Font
+/BaseFont /ZapfDingbats
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+30 0 obj
+<<
+/Type /Font
+/BaseFont /Symbol
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+2 0 obj
+<<
+/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+/Font <<
+/F1 17 0 R
+/F2 18 0 R
+/F3 19 0 R
+/F4 20 0 R
+/F5 21 0 R
+/F6 22 0 R
+/F7 23 0 R
+/F8 24 0 R
+/F9 25 0 R
+/F10 26 0 R
+/F11 27 0 R
+/F12 28 0 R
+/F13 29 0 R
+/F14 30 0 R
+>>
+/XObject <<
+>>
+>>
+endobj
+31 0 obj
+<<
+/Producer (jsPDF 3.0.3)
+/CreationDate (D:20251014164645-05'00')
+>>
+endobj
+32 0 obj
+<<
+/Type /Catalog
+/Pages 1 0 R
+/OpenAction [3 0 R /FitH null]
+/PageLayout /OneColumn
+>>
+endobj
+xref
+0 33
+0000000000 65535 f 
+0000025601 00000 n 
+0000027462 00000 n 
+0000000015 00000 n 
+0000000152 00000 n 
+0000002892 00000 n 
+0000003029 00000 n 
+0000007248 00000 n 
+0000007385 00000 n 
+0000010778 00000 n 
+0000010916 00000 n 
+0000014694 00000 n 
+0000014833 00000 n 
+0000018927 00000 n 
+0000019066 00000 n 
+0000022056 00000 n 
+0000022195 00000 n 
+0000025697 00000 n 
+0000025823 00000 n 
+0000025954 00000 n 
+0000026088 00000 n 
+0000026226 00000 n 
+0000026350 00000 n 
+0000026479 00000 n 
+0000026611 00000 n 
+0000026747 00000 n 
+0000026875 00000 n 
+0000027002 00000 n 
+0000027131 00000 n 
+0000027264 00000 n 
+0000027366 00000 n 
+0000027715 00000 n 
+0000027801 00000 n 
+trailer
+<<
+/Size 33
+/Root 32 0 R
+/Info 31 0 R
+/ID [ <4A66078741FCA38854F1E3AD60253E8F> <4A66078741FCA38854F1E3AD60253E8F> ]
+>>
+startxref
+27905
+%%EOF
